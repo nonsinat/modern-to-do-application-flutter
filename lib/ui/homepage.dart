@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:note_application_flutter/services/theme_services.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
       leading: IconButton(
         onPressed: () {
           debugPrint("tabed");
+          ThemeServices().swithcTheme();
         },
         icon: Icon(
           Icons.nightlight_round,

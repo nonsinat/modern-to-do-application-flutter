@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_application_flutter/ui/homepage.dart';
+import 'package:note_application_flutter/ui/theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,11 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
+      theme: Themes.light,
+      darkTheme: Themes.dark,
+      themeMode: ThemeMode.light,
       home: HomePage(),
     );
   }

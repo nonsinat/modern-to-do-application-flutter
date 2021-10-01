@@ -1,6 +1,8 @@
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:note_application_flutter/services/notification_services.dart';
 import 'package:note_application_flutter/services/theme_services.dart';
@@ -15,6 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  DateTime? _selectedDate = DateTime.now();
   var notifyHelper;
   @override
   void initState() {
@@ -31,7 +34,46 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           _addTaskBar(),
+          _addDateBar(),
         ],
+      ),
+    );
+  }
+
+  _addDateBar() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      child: DatePicker(
+        DateTime.now(),
+        height: 100,
+        width: 80,
+        initialSelectedDate: DateTime.now(),
+        selectionColor: primaryClr,
+        selectedTextColor: Colors.white,
+        dateTextStyle: GoogleFonts.lato(
+          textStyle: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Colors.grey,
+          ),
+        ),
+        dayTextStyle: GoogleFonts.lato(
+          textStyle: TextStyle(
+            // fontSize: 10,
+            fontWeight: FontWeight.w600,
+            color: Colors.grey,
+          ),
+        ),
+        monthTextStyle: GoogleFonts.lato(
+          textStyle: TextStyle(
+            fontWeight: FontWeight.w600,
+            color: Colors.grey,
+          ),
+        ),
+        onDateChange: (date) {
+          _selectedDate = date;
+          print(_selectedDate);
+        },
       ),
     );
   }

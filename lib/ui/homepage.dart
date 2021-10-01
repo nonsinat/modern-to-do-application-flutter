@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:note_application_flutter/services/notification_services.dart';
 import 'package:note_application_flutter/services/theme_services.dart';
-
+import 'package:note_application_flutter/ui/theme.dart';
+import 'package:note_application_flutter/ui/widgets/button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,16 +30,39 @@ class _HomePageState extends State<HomePage> {
       appBar: _appBar(),
       body: Column(
         children: [
-          Row(
+          _addTaskBar(),
+        ],
+      ),
+    );
+  }
+
+  _addTaskBar() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                children: [
-                  Text(
-                    DateTime.now().toString(),
-                  ),
-                ],
+              Text(
+                DateFormat.yMMMMd().format(
+                  DateTime.now(),
+                ),
+                style: subHeadingStyle,
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Text(
+                "Today",
+                style: headingStyle,
               ),
             ],
+          ),
+          MyButton(
+            onTap: () {},
+            label: "+ Add Task",
           ),
         ],
       ),
@@ -60,7 +85,7 @@ class _HomePageState extends State<HomePage> {
           notifyHelper.scheduledNotification();
         },
         child: Icon(
-          Get.isDarkMode ? Icons.wb_sunny_outlined : Icons.nightlight_round,
+          Get.isDarkMode ? Icons.wb_sunny_outlined : Icons.nightlight_outlined,
           // color: Get.isDarkMode ? Colors.white : Colors.black,
         ),
       ),

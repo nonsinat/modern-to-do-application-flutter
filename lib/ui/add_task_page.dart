@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:note_application_flutter/ui/theme.dart';
+import 'package:note_application_flutter/ui/widgets/input_field.dart';
 
 class AddTaskPage extends StatelessWidget {
   const AddTaskPage({Key? key}) : super(key: key);
@@ -14,11 +15,14 @@ class AddTaskPage extends StatelessWidget {
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 "AddTask",
                 style: headingStyle,
               ),
+              MyInputField(title: "Title", hint: "Enter title here"),
+              MyInputField(title: "Note", hint: "Enter note here"),
             ],
           ),
         ),

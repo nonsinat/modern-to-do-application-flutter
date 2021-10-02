@@ -1,10 +1,9 @@
-import 'dart:convert';
 
 class Task {
   int? id;
   String? title;
   String? note;
-  String? isCompleted;
+  int? isCompleted;
   String? date;
   String? startTime;
   String? endTime;

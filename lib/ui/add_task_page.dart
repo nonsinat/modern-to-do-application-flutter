@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:note_application_flutter/controllers/task_controller.dart';
+import 'package:note_application_flutter/models/task.dart';
 import 'package:note_application_flutter/ui/theme.dart';
 import 'package:note_application_flutter/ui/widgets/button.dart';
 import 'package:note_application_flutter/ui/widgets/input_field.dart';
@@ -13,6 +15,7 @@ class AddTaskPage extends StatefulWidget {
 }
 
 class _AddTaskPageState extends State<AddTaskPage> {
+  final TaskController _taskController = Get.put(TaskController());
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _noteController = TextEditingController();
   DateTime _selectedDate = DateTime.now();
@@ -245,9 +248,27 @@ class _AddTaskPageState extends State<AddTaskPage> {
     );
   }
 
+  _addTaskToDb() async {
+    var value = await _taskController.addTask(
+      task: Task(
+        note: _noteController.text,
+        title: _titleController.text,
+        date: DateFormat.yMd().format(_selectedDate),
+        startTime: _startTime,
+        endTime: _endTime,
+        remind: _selectedRemind,
+        repeat: _selectedRepeat,
+        color: _selectedColor,
+        isCompleted: 0,
+      ),
+    );
+    print("My id : $value");
+  }
+
   _validateData() {
     if (_titleController.text.isNotEmpty && _noteController.text.isNotEmpty) {
       //add to database
+      _addTaskToDb();
       Get.back();
     } else if (_titleController.text.isEmpty || _noteController.text.isEmpty) {
       Get.snackbar(

@@ -3,9 +3,14 @@ import 'package:get/get.dart';
 import 'package:note_application_flutter/ui/theme.dart';
 import 'package:note_application_flutter/ui/widgets/input_field.dart';
 
-class AddTaskPage extends StatelessWidget {
+class AddTaskPage extends StatefulWidget {
   const AddTaskPage({Key? key}) : super(key: key);
 
+  @override
+  _AddTaskPageState createState() => _AddTaskPageState();
+}
+
+class _AddTaskPageState extends State<AddTaskPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

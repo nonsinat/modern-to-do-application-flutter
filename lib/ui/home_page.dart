@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> {
       ),
       actions: [
         Icon(
-          Icons.person,
+          Icons.person_outline,
         ),
         SizedBox(
           width: 20,

@@ -1,11 +1,11 @@
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:note_application_flutter/services/notification_services.dart';
 import 'package:note_application_flutter/services/theme_services.dart';
+import 'package:note_application_flutter/ui/add_task_page.dart';
 import 'package:note_application_flutter/ui/theme.dart';
 import 'package:note_application_flutter/ui/widgets/button.dart';
 
@@ -34,6 +34,9 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           _addTaskBar(),
+          SizedBox(
+            height: 5,
+          ),
           _addDateBar(),
         ],
       ),
@@ -103,7 +106,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
           MyButton(
-            onTap: () {},
+            onTap: () => Get.to(AddTaskPage()),
             label: "+ Add Task",
           ),
         ],

@@ -33,7 +33,7 @@ class MyInputField extends StatelessWidget {
           ),
           Container(
             height: 50,
-            width: 300,
+            width: MediaQuery.of(context).size.width * 5,
             padding: EdgeInsets.only(left: 10),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey, width: 1.0),
@@ -42,7 +42,8 @@ class MyInputField extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: TextField(
+                  child: TextFormField(
+                    readOnly: widget == null ? false : true,
                     autofocus: false,
                     autocorrect: true,
                     controller: controller,
@@ -67,6 +68,11 @@ class MyInputField extends StatelessWidget {
                     ),
                   ),
                 ),
+                widget == null
+                    ? Container()
+                    : Container(
+                        child: widget,
+                      ),
               ],
             ),
           ),
